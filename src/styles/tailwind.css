@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-success: hsl(var(--success));
+  --color-warning: hsl(var(--warning));
+  --color-ring: hsl(var(--ring));
+  --color-onBackground: hsl(var(--foreground));
+  --radius-xl: var(--radius);
+  --font-sans: "Aptos", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Cascadia Code", "Consolas", "Courier New", monospace;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+}
+
+:root {
+  --background: 32 33% 95%;
+  --foreground: 18 22% 12%;
+  --card: 32 30% 98%;
+  --card-foreground: 18 22% 12%;
+  --border: 24 18% 84%;
+  --input: 24 18% 84%;
+  --primary: 16 78% 54%;
+  --primary-foreground: 35 70% 98%;
+  --secondary: 36 38% 90%;
+  --secondary-foreground: 18 22% 12%;
+  --muted: 35 26% 92%;
+  --muted-foreground: 18 12% 38%;
+  --accent: 174 46% 42%;
+  --accent-foreground: 180 30% 96%;
+  --destructive: 0 74% 56%;
+  --destructive-foreground: 210 40% 98%;
+  --success: 142 70% 38%;
+  --warning: 38 92% 46%;
+  --ring: 16 78% 54%;
+  --radius: 1rem;
+}
+
+.dark {
+  --background: 204 30% 8%;
+  --foreground: 38 32% 92%;
+  --card: 205 28% 10%;
+  --card-foreground: 38 32% 92%;
+  --border: 201 18% 22%;
+  --input: 201 18% 22%;
+  --primary: 18 82% 62%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 201 22% 15%;
+  --secondary-foreground: 38 32% 92%;
+  --muted: 201 18% 15%;
+  --muted-foreground: 34 18% 64%;
+  --accent: 174 46% 48%;
+  --accent-foreground: 200 36% 10%;
+  --destructive: 0 72% 58%;
+  --destructive-foreground: 210 40% 98%;
+  --success: 142 62% 44%;
+  --warning: 38 88% 54%;
+  --ring: 18 82% 62%;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: hsl(var(--border));
+  }
+
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at top left, rgba(244, 147, 91, 0.12), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(42, 130, 120, 0.1), transparent 28%),
+      hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: "Aptos", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus {
+    -webkit-text-fill-color: hsl(var(--foreground));
+    -webkit-box-shadow: 0 0 0 1000px hsl(var(--card)) inset;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+
+  select,
+  option {
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--card));
+  }
+
+  .dark select,
+  .dark option {
+    color: hsl(var(--foreground));
+    background-color: hsl(var(--card));
+  }
+
+  code,
+  pre,
+  .font-mono {
+    font-family: "Cascadia Code", "Consolas", "Courier New", monospace;
+  }
+}
+
+@layer utilities {
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ef7d52 0%, #dd5f3d 45%, #2b8a7d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-gradient {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(240, 120, 72, 0.18), transparent 24%),
+      radial-gradient(circle at 84% 22%, rgba(43, 138, 125, 0.14), transparent 24%),
+      linear-gradient(160deg, rgba(255, 246, 235, 0.96), rgba(247, 236, 223, 0.92));
+  }
+
+  .dark .hero-gradient {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(240, 120, 72, 0.16), transparent 24%),
+      radial-gradient(circle at 84% 22%, rgba(43, 138, 125, 0.18), transparent 24%),
+      linear-gradient(160deg, rgba(14, 25, 33, 0.98), rgba(10, 20, 28, 0.94));
+  }
+
+  .soft-grid {
+    background-image:
+      linear-gradient(rgba(77, 58, 41, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(77, 58, 41, 0.08) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .dark .soft-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .paper-grid {
+    background-image:
+      linear-gradient(rgba(52, 38, 28, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(52, 38, 28, 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .editorial-card {
+    border: 1px solid hsl(var(--border) / 0.9);
+    background: hsl(var(--card) / 0.86);
+    color: hsl(var(--card-foreground));
+    box-shadow: 0 24px 60px rgba(30, 23, 16, 0.12);
+    backdrop-filter: blur(16px);
+  }
+
+  .eyebrow {
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .apiverse-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(136, 119, 103, 0.72) rgba(255, 248, 239, 0.08);
+  }
+
+  .dark .apiverse-scrollbar {
+    scrollbar-color: rgba(148, 163, 184, 0.55) rgba(255, 255, 255, 0.06);
+  }
+
+  .apiverse-scrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  .apiverse-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 248, 239, 0.08);
+    border-radius: 999px;
+  }
+
+  .dark .apiverse-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .apiverse-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(152, 129, 108, 0.9), rgba(118, 95, 78, 0.9));
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-clip: padding-box;
+  }
+
+  .dark .apiverse-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(148, 163, 184, 0.72), rgba(100, 116, 139, 0.78));
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .apiverse-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(121, 98, 81, 0.94), rgba(95, 72, 59, 0.94));
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .dark .apiverse-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(186, 197, 208, 0.85), rgba(120, 138, 161, 0.88));
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .card-entrance {
+    animation: cardSlideIn 0.35s ease-out both;
+  }
+
+  .themed-select {
+    appearance: none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, rgba(120, 95, 72, 0.9) 50%),
+      linear-gradient(135deg, rgba(120, 95, 72, 0.9) 50%, transparent 50%);
+    background-position:
+      calc(100% - 20px) calc(50% - 2px),
+      calc(100% - 14px) calc(50% - 2px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 2.75rem;
+  }
+
+  .dark .themed-select {
+    background-image:
+      linear-gradient(45deg, transparent 50%, rgba(203, 213, 225, 0.78) 50%),
+      linear-gradient(135deg, rgba(203, 213, 225, 0.78) 50%, transparent 50%);
+  }
+
+  @keyframes cardSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
