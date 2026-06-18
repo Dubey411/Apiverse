@@ -14,18 +14,18 @@ const ThemeContext = createContext<ThemeContextValue>({
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === 'undefined') {
-      return 'dark';
-    }
+  const [theme, setTheme] = useState<Theme>('dark');
 
-    if (document.documentElement.classList.contains('dark')) {
-      return 'dark';
-    }
-
+  useEffect(() => {
     const stored = localStorage.getItem('apiverse-theme') || localStorage.getItem('apishop-theme');
-    return stored === 'light' || stored === 'dark' ? stored : 'dark';
-  });
+    if (stored === 'light' || stored === 'dark') {
+      setTheme(stored);
+    } else if (document.documentElement.classList.contains('dark')) {
+      setTheme('dark');
+    } else {
+      setTheme('dark'); // Default
+    }
+  }, []);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
