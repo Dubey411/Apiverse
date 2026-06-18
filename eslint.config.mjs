@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     "test-*.js",
     "debug-*.json",
+    "run-*.js",
+    "run-*.mjs",
   ]),
 ]);
 

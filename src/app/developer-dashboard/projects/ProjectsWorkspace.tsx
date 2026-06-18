@@ -762,7 +762,7 @@ export default function ProjectsWorkspace({
                   Add API to Project
                 </p>
                 <h2 className="mt-1 font-display text-3xl text-stone-950 dark:text-stone-50">
-                  Connect to "{activeAddApiProjectName}"
+                  Connect to &ldquo;{activeAddApiProjectName}&rdquo;
                 </h2>
               </div>
 
@@ -1361,7 +1361,7 @@ function Step2ConnectApi({
             <ConnectionTestResultCard result={testResult} onUseSuggestedPath={(p) => updateApiForm({ healthPath: p })} />
           ) : (
             <div className="rounded-2xl border border-dashed border-stone-300/70 bg-white/50 p-4 text-sm text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-400">
-              Hit "Test connection" to verify reachability, status code, and latency.
+              Hit &ldquo;Test connection&rdquo; to verify reachability, status code, and latency.
             </div>
           )}
 
@@ -1625,7 +1625,7 @@ function ProjectCard({
       <div className="mt-5 space-y-3">
         {project.apis.length === 0 ? (
           <div className="rounded-[22px] border border-dashed border-stone-300/70 bg-white/55 p-5 text-sm text-stone-600 dark:border-white/10 dark:bg-white/5 dark:text-stone-400">
-            No APIs attached yet. Click "Add API" to attach your first API!
+            No APIs attached yet. Click &ldquo;Add API&rdquo; to attach your first API!
           </div>
         ) : (
           project.apis.map((api) => (
